@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Insertar Docente</title>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <a href="#" class="navbar-brand">
+            <img src="{{url_for('static', filename='Images/logo_adventista.png')}}" width="40" height="40" class="d-inline-block align-top" alt="">
+        </a>
+        <a class="navbar-brand" href="/">Liceo Guatemalteco</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="/Principal">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="/Insertar"> Ingresar Docente </a>
+            <a class="nav-item nav-link" href="/">Ayuda</a>
+          </div>
+        </div>
+    </nav>
+</head>
+<body>
+
+    <div class="col-md-4 offset-md-4" style="margin-top: 1%;">
+        
+        <div class="card card-body text-white bg-success mb-3">
+            <h2 style="text-align: center;">Datos del docente</h2>
+            <br>
+            <form action="/Save" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="Nombre" id="txt_1" placeholder="Ingrese el nombre">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="Edad" id="txt_2" placeholder="Ingrese su edad">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="DPI" id="txt_3" placeholder="Ingrese su DPI">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="Titulo" id="txt_4" placeholder="Titulo Obtenido">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="NIT" id="txt_5" placeholder="Numero NIT">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="IG" id="txt_6" placeholder="Numero IGSS">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="Años" id="txt_7" placeholder="Años laborales en la Institucion">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-light btn-block" id="btn_confirm"  type="submit">SAVE</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript">
+        document.getElementById('btn_confirm').addEventListener('click', (e) =>{
+            var name = document.getElementById('txt_1').value
+            var edad = document.getElementById('txt_2').value
+            var DPI = document.getElementById('txt_3').value
+            var titulo = document.getElementById('txt_4').value
+            var NIT = document.getElementById('txt_5').value
+            var IG = document.getElementById('txt_6').value
+            var Anios = document.getElementById('txt_7').value
+            if(name == "" || edad == "" || DPI == "" || titulo == "" || NIT == "" || IG == ""  || Anios == "")
+            {
+                alert("Debes ingresar todos los datos");
+                e.preventDefault();
+                location.reload();
+            }
+            else
+            {
+                alert("Insertado Correctamente");
+            }
+        });
+    </script>
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

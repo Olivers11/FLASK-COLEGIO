@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <nav class="navbar navbar-expand-md navbar-dark bg-success">
+        <a href="#" class="navbar-brand">
+            <img src="{{url_for('static', filename='Images/logo_adventista.png')}}" width="40" height="36" class="d-inline-block align-top" alt="">
+        </a>
+        <a class="navbar-brand" href="/">Liceo Guatemalteco</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="/Insertar"> Ingresar Docente </a>
+            <a class="nav-item nav-link" href="/">Ayuda</a>
+          </div>
+        </div>
+    </nav>
+</head>
+<body id="cuerpo">
+    <style>
+        body{
+            background: #E9EBEC;
+        }
+        #cuerpo::before{
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          min-height: 120vh;
+          top: 0;
+          left: 0;
+          background: linear-gradient(90deg, #a1ffce, #faffd1);
+          opacity: 0.7;
+          z-index: -1;
+        }
+    </style>
+    <h2 style="text-align: center;"> Personal</h2>
+    <div class="container-fluid">
+        <div class="row">
+            <table class="table table-striped table-bordered bg-white table-sm">
+                <thead>
+                    <tr style="text-align: center; background: #28A745; color: white;">
+                        <td>Nombre</td>
+                        <td>Edad</td>
+                        <td>DPI</td>
+                        <td>Titulo</td>
+                        <td>NIT</td>
+                        <td style="white-space: nowrap;">Años de Trabajo</td>
+                        <td>IGSS</td>
+                        <td>Operaciones</td>
+                    </tr>
+                </thead>
+                <tbody style="text-align: center;">
+                    {% for contact in contacts %}
+                    <tr>
+                        <td style="white-space: nowrap;">{{ contact.0 }}</td>
+                        <td>{{ contact.1 }}</td>
+                        <td>{{ contact.2 }}</td>
+                        <td>{{ contact.3 }}</td>
+                        <td>{{ contact.4 }}</td>
+                        <td>{{ contact.5 }}</td>
+                        <td>{{ contact.6 }}</td>
+                        <td style="text-align: center; white-space: nowrap;">
+                            <a class="btn btn-secondary" href="/edit/{{contact.0}}">Editar</a>
+                            <a class="btn btn-danger btn-delete" href="/eliminar/{{contact.0}}" id="boton">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        const btnDelete= document.querySelectorAll('.btn-delete');
+        if(btnDelete) {
+        const btnArray = Array.from(btnDelete);
+        btnArray.forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+            if(!confirm('¿Desea eliminar este registro? Se eliminaran todos los datos')){
+                e.preventDefault();
+            }
+            });
+        })
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

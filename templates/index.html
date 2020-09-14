@@ -1,0 +1,81 @@
+<body id="cuerpo">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/estilo.css')}}">
+    <style>
+        #cuerpo::before{
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          min-height: 120vh;
+          top: 0;
+          left: 0;
+          background: linear-gradient(90deg, #7D96AE, #090E13);
+          opacity: 0.7;
+          z-index: -1;
+        }
+        #btn_:hover{
+            border: 2px solid black;
+            background: #FFC107;
+        }
+        #btn_{
+            background: #FFC107;
+        }
+        #txt_:focus{
+            background: #E9EBEC;
+        }
+    </style>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a href="#" class="navbar-brand">
+            <img src="{{url_for('static', filename='Images/logo_adventista.png')}}" width="40" height="40" class="d-inline-block align-top" alt="">
+        </a>
+        <a class="navbar-brand" href="/">Liceo Guatemalteco</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="/">Ayuda</a>
+          </div>
+        </div>
+      </nav>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <div class="col-md-4 offset-md-4">
+            <div class="card card-body ">
+                <form action="/login" method="POST" style="text-align: center;">
+                    <h3>Login</h3>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" style="text-align: center;" id="txt_" class="form-control" name="Nombre" placeholder="Ingrese su Nombre o Usuario" id="">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" style="text-align: center;" id="txt_" class="form-control" name="Contraseña" id="" placeholder="Ingrese la contraseña">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                    <button class="btn btn-warning" id="btn_" type="submit" style="width: 100%;">Entrar</button>
+                    </div>
+                </form>
+            </div>
+                {% with messages =  get_flashed_messages() %}
+                    {% if messages %}
+                        {% for mensaje in messages  %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ mensaje }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
